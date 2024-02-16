@@ -2,24 +2,184 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const name = '리액트';
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/*  */}
+      <div
+        className="react" // 주석
+      >
+        {name}
+      </div>
+      <input />
+    </>
   );
 }
+
+// function App() {
+//   const name = '리액트';
+//   return (
+//     <>
+//       <div className="react">{name}</div>
+//       <input />
+//     </>
+//   );
+// }
+
+// function App() {
+//   const name = '리액트';
+//   return (
+//     <>
+//       <div className="react">{name}</div>
+//       <input></input>
+//     </>
+//   );
+// }
+
+// function App() {
+//   const name = '리액트';
+//   return <div className="react">{name}</div>;
+// }
+
+// function App() {
+//   const name = '리액트'
+//   return (
+//     <div style={{
+//       backgroundColor: 'black',
+//       color: 'aqua',
+//       fontSize: '48px',
+//       fontWeight: 'bold',
+//       padding: 6
+//     }}
+//     >{name}</div>
+//   )
+
+// }
+
+// function App() {
+//   const name = '리액트';
+//   const style = {
+//     backgroundColor: 'black',
+//     color: 'aqua',
+//     fontSize: '48px',
+//     fontWeight: 'bold',
+//     padding: 16
+//   }
+
+//   return <div style={style}>{name}</div>
+// }
+
+// function App() {
+//   const name = undefined;
+//   return <div>{name || '리액트'}</div>;
+// }
+
+// function App() {
+//   const name = undefined
+//   return name || '값이 undefined입니다.';
+// }
+
+// function App() {
+//   const name = undefined
+//   return name;
+// }
+
+// function App() {
+//   const number = 2
+//   return <div>{number && <h1>리액트입니다.</h1>}</div>;
+// }
+
+// function App() {
+//   const number = 0
+//   return <div>{number && <h1>리액트입니다.</h1>}</div>;
+// }
+
+// function App() {
+//   const name = '리액트';
+//   return <div>{name === '리액트' && <h1>리액트입니다.</h1>}</div>;
+// }
+
+// function App() {
+//   const name = '리액트1';
+//   return (
+//     <div>
+//       {name === '리액트' ? <h1>리액트입니다.</h1> : null }
+//     </div>
+//   );
+// }
+
+// function App() {
+//   const name = '리액트1';
+//   return (
+//     <div>
+//       {name === '리액트' ? <h1>리액트입니다.</h1> : <h1>리액트가 아닙니다.</h1>}
+//     </div>
+//   );
+// }
+
+// function App() {
+//   const name = '리액트'
+//   return (
+//     <>
+//       <h1>리액트 안녕!</h1>
+//       <h2>{name}, 잘 동작하니?</h2>
+//     </>
+//   );
+// }
+
+// function App() {
+//   return (
+//     <div>
+//       <h1>리액트 안녕!</h1>
+//       <h2>잘 동작하니? #</h2>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <img src={logo} className="App-logo" alt="logo"></img>
+//         <p>
+//           Edit <code>src/App.js</code> and save to reload. #
+//         </p>
+//         <a
+//           className="App-link"
+//           href="https://reactjs.org"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Learn React
+//         </a>
+//       </header>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <img src={logo} className="App-logo" alt="logo" />
+//         <p>
+//           Edit <code>src/App.js</code> and save to reload.
+//         </p>
+//         <a
+//           className="App-link"
+//           href="https://reactjs.org"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Learn React
+//         </a>
+//       </header>
+//     </div>
+//   );
+// }
 
 export default App;
