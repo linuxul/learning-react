@@ -1,20 +1,60 @@
 import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
+import MyComponent from './MyComponent';
+import Counter from './Counter';
+import Say from './Say';
 
-function App() {
-  const name = '리액트';
-  return (
-    <>
-      {/*  */}
-      <div
-        className="react" // 주석
-      >
-        {name}
-      </div>
-      <input />
-    </>
-  );
-}
+const App = () => {
+  return <Say></Say>
+};
+
+// const App = () => {
+//   return <Counter></Counter>
+// };
+
+// const App = () => {
+//   return <MyComponent name="React" favoriteNumber={1}>리액트</MyComponent>;
+// };
+
+// const App = () => {
+//   return <MyComponent name="React">리액트</MyComponent>;
+// };
+
+// const App = () => {
+//   return <MyComponent name="React"></MyComponent>
+// }
+
+// const App = () => {
+//   return <MyComponent></MyComponent>
+// }
+
+// class App extends Component {
+//   render() {
+//     const name = 'react'
+//     return <div className='react'>{name}</div>
+//   }
+// }
+
+// function App() {
+//   const name = '리액트';
+//   return <div className="react">{name}</div>;
+// }
+
+// function App() {
+//   const name = '리액트';
+//   return (
+//     <>
+//       {/*  */}
+//       <div
+//         className="react" // 주석
+//       >
+//         {name}
+//       </div>
+//       <input />
+//     </>
+//   );
+// }
 
 // function App() {
 //   const name = '리액트';
