@@ -3,7 +3,7 @@ import './App.css';
 import TodoTemplate from './TodoTemplate';
 import TodoInsert from './TodoInsert';
 import TodoList from './TodoList';
-import { useState } from 'react';
+import { useState, useRef, useCallback } from 'react';
 
 const App = () => {
   const [todos, setTodos] = useState([
@@ -24,9 +24,24 @@ const App = () => {
     }
   ]);
 
+  const nextId = useRef(4);
+
+  const onInsert = useCallback(
+    (text) => {
+      const todo = {
+        id: nextId.current,
+        text,
+        checked: false
+      };
+      setTodos(todos.concat(todo));
+      nextId.current += 1;
+    },
+    [todos]
+  );
+
   return (
     <TodoTemplate>
-      <TodoInsert></TodoInsert>
+      <TodoInsert onInsert={onInsert}></TodoInsert>
       <TodoList todos={todos}></TodoList>
     </TodoTemplate>
   );
