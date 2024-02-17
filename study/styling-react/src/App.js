@@ -3,16 +3,27 @@ import './App.css';
 import { Component } from 'react';
 import SassComponent from './SassComponent';
 import CSSModele from './CSSModule';
+import StyledComponent from './StyledComponent';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <CSSModele></CSSModele>
+        <StyledComponent></StyledComponent>
       </div>
-    );
+    )
   }
 }
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <CSSModele></CSSModele>
+//       </div>
+//     );
+//   }
+// }
 
 // class App extends Component {
 //   render() {
