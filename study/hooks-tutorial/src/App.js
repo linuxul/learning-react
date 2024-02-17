@@ -1,25 +1,55 @@
 import logo from './logo.svg';
 import './App.css';
+import Counter from './Counter';
+import Info from './Info';
+import { useState } from 'react';
+import Average from './Average';
+import MyComponent from './MyComponent';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  return <Info></Info>
 }
+
+// const App = () => {
+//   return <MyComponent></MyComponent>
+// }
+
+// const App = () => {
+//   return <Average></Average>
+// }
+
+// const App = () => {
+//   return <Info></Info>
+// }
+
+// const App = () => {
+//   return <Counter></Counter>
+// }
+
+// const App = () => {
+//   const [visible, setVisible] = useState(false);
+//   return (
+//     <div>
+//       <button
+//         onClick={() => {
+//           setVisible(!visible);
+//         }}
+//       >
+//         {' '}
+//         {visible ? '숨기기' : '보이기'}
+//       </button>
+//       <hr></hr>
+//       {visible && <Info></Info>}
+//     </div>
+//   );
+// };
+
+// const App = () => {
+//   return <Info></Info>
+// }
+
+// const App = () => {
+//   return <Counter></Counter>
+// }
 
 export default App;
