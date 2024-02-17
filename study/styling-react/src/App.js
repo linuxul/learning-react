@@ -2,16 +2,27 @@ import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 import SassComponent from './SassComponent';
+import CSSModele from './CSSModule';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <SassComponent></SassComponent>
+        <CSSModele></CSSModele>
       </div>
     );
   }
 }
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <SassComponent></SassComponent>
+//       </div>
+//     );
+//   }
+// }
 
 // class App extends Component {
 //   render() {
