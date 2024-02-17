@@ -4,10 +4,52 @@ import { Component } from 'react';
 import MyComponent from './MyComponent';
 import Counter from './Counter';
 import Say from './Say';
+import EventPracticeFunc from './EventPracticeFunc';
+import ValidationSample from './ValidationSample';
+import ScrollBox from './ScrollBox';
+import IterationSample from './IterationSample';
 
-const App = () => {
-  return <Say></Say>
-};
+class App extends Component {
+  render() {
+    return (
+      <IterationSample></IterationSample>
+    )
+  }
+}
+
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <ScrollBox ref={(ref) => (this.scrollBox = ref)}></ScrollBox>
+//         <botton
+//           onClick={() => {
+//             this.scrollBox.scrollToBottom();
+//           }}
+//         >
+//           맨 밑으로
+//         </botton>
+//       </div>
+//     );
+//   }
+// }
+
+// const App = () => {
+//   return <ValidationSample></ValidationSample>
+// };
+
+// const App = () => {
+//   return <EventPracticeFunc></EventPracticeFunc>
+// };
+
+// const App = () => {
+//   return <EventPractice></EventPractice>;
+// };
+
+// const App = () => {
+//   return <Say></Say>
+// };
 
 // const App = () => {
 //   return <Counter></Counter>
