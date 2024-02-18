@@ -1,18 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import NewsList from './components/NewsList';
 import Categories from './components/Categories';
 
 const App = () => {
+  const [category, setCategory] = useState('all');
+  const onSelect = useCallback((category) => setCategory(category), []);
+
+  console.log('start App')
+
   return (
     <>
-      <Categories></Categories>
-      <NewsList></NewsList>
+      <Categories category={category} onSelect={onSelect}></Categories>
+      <NewsList category={category}></NewsList>
     </>
   );
 };
+
+// const App = () => {
+//   return (
+//     <>
+//       <Categories></Categories>
+//       <NewsList></NewsList>
+//     </>
+//   );
+// };
 
 // const App = () => {
 //   return <NewsList></NewsList>;
