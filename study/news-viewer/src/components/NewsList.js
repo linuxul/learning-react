@@ -20,15 +20,16 @@ const NewsList = ({ category }) => {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  console.log('start NewsList');
+  console.log('start NewsList : ', category);
   useEffect(() => {
     const fetchData = async () => {
       console.log('fetchData : ');
       setLoading(true);
       try {
         const query = category === 'all' ? '' : `&category=${category}`;
+        console.log('query : ' + query)
         const response = await axios.get(
-          `https://newsapi.org/v2/top-headlines?country=kr&apiKey=2cbd90bd1f4c442dbf4cbc42727c4807${query}`
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=2cbd90bd1f4c442dbf4cbc42727c4807`
         );
 
         setArticles(response.data.articles);
@@ -38,7 +39,7 @@ const NewsList = ({ category }) => {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [category]);
 
   if (loading) {
     return <NewsListBlock>대기중...</NewsListBlock>;
@@ -51,7 +52,7 @@ const NewsList = ({ category }) => {
   return (
     <NewsListBlock>
       {articles.map((article) => (
-        <NewsItem key={articles.url} article={article}></NewsItem>
+        <NewsItem key={article.url} article={article}></NewsItem>
       ))}
     </NewsListBlock>
   );
