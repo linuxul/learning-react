@@ -3,10 +3,20 @@ import './App.css';
 import axios from 'axios';
 import { useState } from 'react';
 import NewsList from './components/NewsList';
+import Categories from './components/Categories';
 
 const App = () => {
-  return <NewsList></NewsList>;
+  return (
+    <>
+      <Categories></Categories>
+      <NewsList></NewsList>
+    </>
+  );
 };
+
+// const App = () => {
+//   return <NewsList></NewsList>;
+// };
 
 // function App() {
 //   const [data, setData] = useState(null);
