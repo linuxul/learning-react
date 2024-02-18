@@ -14,7 +14,7 @@ const ColorProvider = ({ children }) => {
 
   const value = {
     state: { color, subColor },
-    action: { setColor, setSubColor }
+    actions: { setColor, setSubColor }
   };
 
   return (

@@ -2,16 +2,28 @@ import logo from './logo.svg';
 import './App.css';
 import ColorBox from './components/ColoBox';
 import { ColorProvider } from './contexts/color';
+import SelectColor from './components/SelectColor';
 
 function App() {
   return (
     <ColorProvider>
       <div>
+        <SelectColor></SelectColor>
         <ColorBox></ColorBox>
       </div>
     </ColorProvider>
   );
 }
+
+// function App() {
+//   return (
+//     <ColorProvider>
+//       <div>
+//         <ColorBox></ColorBox>
+//       </div>
+//     </ColorProvider>
+//   );
+// }
 
 // function App() {
 //   return (
