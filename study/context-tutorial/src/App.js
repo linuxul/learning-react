@@ -1,17 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
 import ColorBox from './components/ColoBox';
-import ColorContext from './contexts/color';
+import { ColorProvider } from './contexts/color';
 
 function App() {
   return (
-    <ColorContext.Provider value={{ color: 'green'}}>
+    <ColorProvider>
       <div>
         <ColorBox></ColorBox>
       </div>
-    </ColorContext.Provider>
+    </ColorProvider>
   );
 }
+
+// function App() {
+//   return (
+//     <ColorContext.Provider value={{ color: 'green'}}>
+//       <div>
+//         <ColorBox></ColorBox>
+//       </div>
+//     </ColorContext.Provider>
+//   );
+// }
 
 // function App() {
 //   return (
