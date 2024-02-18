@@ -2,39 +2,42 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import { useState } from 'react';
+import NewsList from './components/NewsList';
 
+const App = () => {
+  return <NewsList></NewsList>;
+};
 
-function App() {
-  const [data, setData] = useState(null);
+// function App() {
+//   const [data, setData] = useState(null);
 
-  const onClick = async () => {
-    try {
-      const response = await axios.get(
-        'https://newsapi.org/v2/top-headlines?country=kr&apiKey=2cbd90bd1f4c442dbf4cbc42727c4807'
-      );
-      console.log(response);
-      setData(response.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+//   const onClick = async () => {
+//     try {
+//       const response = await axios.get(
+//         'https://newsapi.org/v2/top-headlines?country=kr&apiKey=2cbd90bd1f4c442dbf4cbc42727c4807'
+//       );
+//       console.log(response);
+//       setData(response.data);
+//     } catch (e) {
+//       console.log(e);
+//     }
+//   };
 
-  return (
-    <div>
-      <div>
-        <button onClick={onClick}>불러오기</button>
-      </div>
-      {data && (
-        <textarea
-          rows={7}
-          value={JSON.stringify(data, null, 2)}
-          readOnly={true}
-        ></textarea>
-      )}
-    </div>
-  );
-}
-
+//   return (
+//     <div>
+//       <div>
+//         <button onClick={onClick}>불러오기</button>
+//       </div>
+//       {data && (
+//         <textarea
+//           rows={7}
+//           value={JSON.stringify(data, null, 2)}
+//           readOnly={true}
+//         ></textarea>
+//       )}
+//     </div>
+//   );
+// }
 
 // function App() {
 //   const [data, setData] = useState(null);
