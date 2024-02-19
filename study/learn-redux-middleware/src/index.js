@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import rootReducer from './modules';
 import { Provider } from 'react-redux';
 import { devToolsEnhancer } from '@redux-devtools/extension'
+import loggerMiddleware from './lib/loggerMiddleware';
+import { createLogger } from 'redux-logger'
+import { thunk } from 'redux-thunk'
 
-const store = createStore(rootReducer, devToolsEnhancer());
+const logger = createLogger()
+const store = createStore(rootReducer, applyMiddleware(logger, thunk));
+// const store = createStore(rootReducer, applyMiddleware(loggerMiddleware));
+// const store = createStore(rootReducer, devToolsEnhancer());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
