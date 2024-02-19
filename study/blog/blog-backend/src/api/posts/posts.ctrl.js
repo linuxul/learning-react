@@ -18,7 +18,6 @@ exports.getPostById = async (ctx, next) => {
       return;
     }
     ctx.state.post = post;
-    return;
   } catch (e) {
     ctx.throw(500, e);
   }
@@ -32,6 +31,7 @@ exports.checkOwnPost = (ctx, next) => {
     ctx.status = 403;
     return;
   }
+  console.log('checkOwnPost #1 : ')
   return next();
 };
 
@@ -97,7 +97,7 @@ exports.list = async (ctx) => {
   const { tag, username } = ctx.query
   // tag, username 값이 유효하면 객체 안에 넣고, 그렇지 않으면 넣지 않음
   const query = {
-    ...(username ? { 'users.username' : username} : {}),
+    ...(username ? { 'user.username' : username} : {}),
     ...(tag ? { tags : tag } : {})
   }
 
@@ -139,6 +139,8 @@ exports.read = (ctx) => {
 */
 exports.remove = async (ctx) => {
   const { id } = ctx.params;
+  console.log('wrremovete #1 : ' + id)
+
   try {
     await Post.findByIdAndDelete(id).exec();
     ctx.status = 204;
@@ -162,7 +164,7 @@ exports.update = async (ctx) => {
     // 객체가 다음 필드를 가지고 있음을 검증
     title: joi.string(),
     body: joi.string(),
-    tags: joi.string().items(joi.string())
+    tags: joi.array().items(joi.string())
   });
 
   // 검증하고 나서 검증 실패인 경우 에러처리
