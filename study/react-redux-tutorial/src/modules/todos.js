@@ -31,7 +31,7 @@ export const remove = (id) => ({
 
 const initialState = {
   input: '',
-  todo: [
+  todos: [
     {
       id: 1,
       text: '리덕스 기초 배우기',
