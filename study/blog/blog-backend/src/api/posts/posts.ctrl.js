@@ -44,21 +44,26 @@ exports.checkOwnPost = (ctx, next) => {
   }
 */
 exports.write = async (ctx) => {
+  console.log('write #1 : ', ctx)
+
   const schema = joi.object().keys({
     // 객체가 다음 필드를 가지고 있음을 검증
     title: joi.string().required(),
     body: joi.string().required(),
-    tags: joi.string().items(joi.string()).require()
+    tags: joi.array().items(joi.string()).required()
   });
 
   // 검증하고 나서 검증 실패인 경우 에러처리
   const result = schema.validate(ctx.request.body);
+  console.log('write #2 : ', result)
+
   if (result.error) {
     ctx.status = 400;
     ctx.body = result.error;
     return;
   }
 
+  console.log('write #3 : ')
   const { title, body, tags } = ctx.request.body;
   const post = new Post({
     title,
@@ -66,6 +71,8 @@ exports.write = async (ctx) => {
     tags,
     user: ctx.state.user
   });
+  console.log('write #4 : ' + post)
+
   try {
     await post.save();
     ctx.body = post;
@@ -90,7 +97,7 @@ exports.list = async (ctx) => {
   const { tag, username } = ctx.query
   // tag, username 값이 유효하면 객체 안에 넣고, 그렇지 않으면 넣지 않음
   const query = {
-    ...(username ? { 'user.username' : username} : {}),
+    ...(username ? { 'users.username' : username} : {}),
     ...(tag ? { tags : tag } : {})
   }
 

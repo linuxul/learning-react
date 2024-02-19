@@ -114,6 +114,8 @@ exports.login = async (ctx) => {
 };
 
 exports.check = async (ctx) => {
+  console.log('check #1')
+
   const { user } = ctx.state
   if (!user) {
     ctx.state = 401
@@ -123,6 +125,8 @@ exports.check = async (ctx) => {
 };
 
 exports.logout = async (ctx) => {
+  console.log('logout #1')
+
   ctx.cookies.set('access_token')
   ctx.status = 204
 };

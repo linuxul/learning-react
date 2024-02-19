@@ -3,6 +3,7 @@ const checkLoggedIn = (ctx, next) => {
     ctx.status = 401;
     return;
   }
+  return next()
 };
 
 module.exports = checkLoggedIn;
