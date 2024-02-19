@@ -51,15 +51,78 @@ exports.register = async (ctx) => {
     // const data = user.toJSON();
     // delete data.hashedPassword;
     ctx.body = user.serialize()
+
+    const token = user.generateToken()
+    ctx.cookies.set('access_token', token, {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      httpOnly: true
+    })
   } catch (e) {
     ctx.throw(500, e);
   }
 };
 
+/*
+  POST /api/auth/login
+  {
+      "username": "velopert",
+      "password": "mypass1234",
+  }
+*/
 exports.login = async (ctx) => {
+  console.log('login #1 : ', ctx)
 
+  const { username, password } = ctx.request.body;
+  console.log('login #3 : ' + username)
+  console.log('login #4 : ' + password)
+
+  if (!username || !password) {
+    ctx.status = 401
+    return
+  }
+
+  try {
+    // username이 이미 존재하는지 확인
+    const user = await User.findByUsername(username);
+    if (!user) {
+      ctx.status = 401;
+      return;
+    }
+
+    const valid = await user.checkPassword(password)
+
+    if (!valid) {
+      ctx.status = 401
+      return  
+    }
+    console.log('login #6')
+
+    // 응답할 데이터에서 hashedPassword 필드 제거
+    // const data = user.toJSON();
+    // delete data.hashedPassword;
+    ctx.body = user.serialize()
+
+    const token = user.generateToken()
+    ctx.cookies.set('access_token', token, {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      httpOnly: true
+    })
+
+  } catch (e) {
+    ctx.throw(500, e);
+  }
 };
 
-exports.check = async (ctx) => {};
+exports.check = async (ctx) => {
+  const { user } = ctx.state
+  if (!user) {
+    ctx.state = 401
+    return
+  }
+  ctx.body = user;
+};
 
-exports.logout = async (ctx) => {};
+exports.logout = async (ctx) => {
+  ctx.cookies.set('access_token')
+  ctx.status = 204
+};
