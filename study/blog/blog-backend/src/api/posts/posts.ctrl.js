@@ -1,5 +1,6 @@
 const Post = require('../../models/post');
 const mongoose = require('mongoose');
+const joi = require('joi');
 
 const { ObjectId } = mongoose.Types;
 exports.checkObjectId = (ctx, next) => {
@@ -20,7 +21,21 @@ exports.checkObjectId = (ctx, next) => {
   }
 */
 exports.write = async (ctx) => {
-  console.log(ctx);
+  const schema = joi.object().keys({
+    // 객체가 다음 필드를 가지고 있음을 검증
+    title: joi.string().required(),
+    body: joi.string().required(),
+    tags: joi.string().items(joi.string()).require()
+  });
+
+  // 검증하고 나서 검증 실패인 경우 에러처리
+  const result = schema.validate(ctx.request.body);
+  if (result.error) {
+    ctx.status = 400;
+    ctx.body = result.error;
+    return;
+  }
+
   const { title, body, tags } = ctx.request.body;
   const post = new Post({
     title,
@@ -88,6 +103,22 @@ exports.replace = async (ctx) => {};
 */
 exports.update = async (ctx) => {
   const { id } = ctx.params;
+
+  const schema = joi.object().keys({
+    // 객체가 다음 필드를 가지고 있음을 검증
+    title: joi.string(),
+    body: joi.string(),
+    tags: joi.string().items(joi.string())
+  });
+
+  // 검증하고 나서 검증 실패인 경우 에러처리
+  const result = schema.validate(ctx.request.body);
+  if (result.error) {
+    ctx.status = 400;
+    ctx.body = result.error;
+    return;
+  }
+
   try {
     const post = await Post.findByIdAndUpdate(id, ctx.request.body, {
       new: true
