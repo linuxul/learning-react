@@ -46,6 +46,7 @@ const initialState = {
 };
 
 function todos(state = initialState, action) {
+  console.log('todos : action = ' + JSON.stringify(action))
   switch (action.type) {
     case CHANGE_INPUT:
       return {
@@ -55,7 +56,7 @@ function todos(state = initialState, action) {
     case INSERT:
       return {
         ...state,
-        input: state.todos.concat(action.todo)
+        todos: state.todos.concat(action.todo)
       };
 
     case TOGGLE:
