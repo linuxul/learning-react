@@ -19,6 +19,7 @@ mongoose
   .catch((e) => {
     console.log(e);
   });
+mongoose.set('debug', true);
 
 const app = new Koa();
 const router = new Router();
