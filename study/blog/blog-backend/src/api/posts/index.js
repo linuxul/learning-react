@@ -1,20 +1,16 @@
-const Router = require('koa-router')
-const postsCtrl = require('./posts.ctrl')
+const Router = require('koa-router');
+const postsCtrl = require('./posts.ctrl');
 
-const posts = new Router()
+const posts = new Router();
 
-const printInfo = ctx => {
-  ctx.body = {
-    methed: ctx.method,
-    path: ctx.path,
-    params: ctx.params
-  }
-}
+posts.get('/', postsCtrl.list);
+posts.post('/', postsCtrl.write);
 
-posts.get('/', postsCtrl.list)
-posts.post('/', postsCtrl.write)
-posts.get('/:id', postsCtrl.read)
-posts.delete('/:id', postsCtrl.remove)
-posts.patch('/:id', postsCtrl.update)
+const post = new Router();
+post.get('/', postsCtrl.checkObjectId, postsCtrl.read);
+post.delete('/', postsCtrl.checkObjectId, postsCtrl.remove);
+post.patch('/', postsCtrl.checkObjectId, postsCtrl.update);
 
-module.exports = posts
+posts.use('/:id', postsCtrl.checkObjectId, post.routes());
+
+module.exports = posts;
