@@ -32,6 +32,8 @@ const StyledButton = styled.button`
     `}
 `;
 
-const Button = (props) => <StyledButton {...props}></StyledButton>;
+const Button = ({ cyan, fullWidth, ...props }) => (
+  <StyledButton cyan={cyan ? 1 : 0} fullWidth={fullWidth ? 1 : 0} {...props} />
+);
 
 export default Button;
