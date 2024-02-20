@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import theme from '../../lib/styles/theme';
 import Button from '../common/Button';
 
+const textMap = {
+  login: '로그인',
+  register: '회원가입'
+}
+
 // 회원가입 또는 로그인 폼을 보여 줍니다.
 const AuthFormBlock = styled.div`
   h3 {
@@ -42,6 +47,10 @@ const Footer = styled.div`
   }
 `;
 
+const ButtonWithMarginTop = styled(Button)`
+  margin-top: 1rem;
+`;
+
 const AuthForm = () => {
   return (
     <AuthFormBlock>
@@ -58,7 +67,9 @@ const AuthForm = () => {
           placeholder="비밀번호"
           type="password"
         ></StyledInput>
-        <Button>로그인</Button>
+        <ButtonWithMarginTop cyan fullWidth>
+          로그인
+        </ButtonWithMarginTop>
       </form>
       <Footer>
         <Link to="/register">회원가입</Link>
